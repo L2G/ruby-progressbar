@@ -95,7 +95,13 @@ class ProgressBar
     sec = t % 60
     min  = (t / 60) % 60
     hour = t / 3600
-    sprintf("%02d:%02d:%02d", hour, min, sec);
+    if hour < 24
+      sprintf("%02d:%02d:%02d", hour, min, sec);
+    else
+      hour %= 24
+      day = t / 86_400
+      sprintf("%02dd%02d:%02d", day, hour, min);
+    end
   end
 
   # ETA stands for Estimated Time of Arrival.
