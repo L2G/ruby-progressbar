@@ -1,6 +1,6 @@
 require 'test/unit'
 
-$:.unshift File.expand_path(File.join('..','lib'), __FILE__)
+$:.unshift File.join(File.dirname(__FILE__),'..','lib')
 require 'progressbar'
 
 class ProgressBarTest < Test::Unit::TestCase
