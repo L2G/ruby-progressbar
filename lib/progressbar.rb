@@ -70,11 +70,11 @@ class ProgressBar
     if bytes < 1024
       sprintf("%6dB", bytes)
     elsif bytes < 1024 * 1000 # 1000kb
-      sprintf("%5.1fKB", bytes.to_f / 1024)
+      sprintf("%5.1fKiB", bytes.to_f / 1024)
     elsif bytes < 1024 * 1024 * 1000  # 1000mb
-      sprintf("%5.1fMB", bytes.to_f / 1024 / 1024)
+      sprintf("%5.1fMiB", bytes.to_f / 1024 / 1024)
     else
-      sprintf("%5.1fGB", bytes.to_f / 1024 / 1024 / 1024)
+      sprintf("%5.1fGiB", bytes.to_f / 1024 / 1024 / 1024)
     end
   end
 
