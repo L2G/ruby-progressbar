@@ -94,6 +94,16 @@ class ProgressBarTest < Test::Unit::TestCase
     pbar.halt
   end
 
+  def test_glacial
+    total = 100_000_000
+    pbar = do_make_progress_bar("test(glacial)", total)
+    0.step(500, 1) {|x|
+      pbar.set(x)
+      sleep(SleepUnit)
+    }
+    pbar.halt
+  end
+
   def test_total_zero
     total = 0
     pbar = do_make_progress_bar("test(total=0)", total)
