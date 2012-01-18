@@ -1,5 +1,7 @@
 require 'test/unit'
-require File.expand_path('../lib/progressbar', __FILE__)
+
+$:.unshift File.expand_path(File.join('..','lib'), __FILE__)
+require 'progressbar'
 
 class ProgressBarTest < Test::Unit::TestCase
   SleepUnit = 0.01
