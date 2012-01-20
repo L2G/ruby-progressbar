@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name = "ruby-progressbar"
-  s.version = "0.0.10"
+  s.version = "0.0.10.0.2"
 
   s.author = "Satoru Takabayashi"
   s.date = Date.today.to_s
