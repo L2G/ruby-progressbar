@@ -66,12 +66,16 @@ class ProgressBar
     do_percentage * @terminal_width / 100
   end
 
+  # Converts a number to a byte-oriented measurement in a string.  This uses
+  # the "kibibyte" convention to denote multiples of 1024 (2^10), as purists
+  # like to avoid confusion with the SI definitions of "kilo," "mega," and
+  # "giga" (10^3, 10^6, 10^9).
   def convert_bytes (bytes)
     if bytes < 1024
       sprintf("%6dB", bytes)
-    elsif bytes < 1024 * 1000 # 1000kb
+    elsif bytes < 1024 * 1000 # 1000 KiB
       sprintf("%5.1fKiB", bytes.to_f / 1024)
-    elsif bytes < 1024 * 1024 * 1000  # 1000mb
+    elsif bytes < 1024 * 1024 * 1000  # 1000 MiB
       sprintf("%5.1fMiB", bytes.to_f / 1024 / 1024)
     else
       sprintf("%5.1fGiB", bytes.to_f / 1024 / 1024 / 1024)
