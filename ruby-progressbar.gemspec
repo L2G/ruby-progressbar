@@ -6,7 +6,7 @@ Gem::Specification.new do |s|
   s.date = Date.today.to_s
   s.description = "Ruby/ProgressBar is a text progress bar library for Ruby."
   s.email = "satoru@namazu.org"
-  s.files = %w[GPL_LICENSE RUBY_LICENSE README.md lib/progressbar.rb test.rb]
+  s.files = %w[GPL_LICENSE RUBY_LICENSE README.md lib/progressbar.rb test/test_progressbar.rb]
   s.homepage = "http://github.com/nex3/ruby-progressbar"
   s.require_paths = ["lib"]
   s.summary = <<END
