@@ -18,8 +18,8 @@ class ProgressBar
     @out = out
     @terminal_width = 80
     @bar_mark = "o"
-    @current = 0
-    @previous = 0
+    @current_value = 0
+    @previous_value = 0
     @finished_p = false
     @start_time = time_now
     @previous_time = @start_time
@@ -79,12 +79,12 @@ class ProgressBar
   end
 
   def transfer_rate
-    bytes_per_second = @current.to_f / (time_now - @start_time)
+    bytes_per_second = @current_value.to_f / (time_now - @start_time)
     sprintf("%s/s", convert_bytes(bytes_per_second))
   end
 
   def bytes
-    convert_bytes(@current)
+    convert_bytes(@current_value)
   end
 
   def format_time (t)
@@ -97,11 +97,11 @@ class ProgressBar
 
   # ETA stands for Estimated Time of Arrival.
   def eta
-    if @current == 0
+    if @current_value == 0
       "ETA:  --:--:--"
     else
       elapsed = time_now - @start_time
-      eta = elapsed * @total / @current - elapsed;
+      eta = elapsed * @total / @current_value - elapsed;
       sprintf("ETA:  %s", format_time(eta))
     end
   end
@@ -119,7 +119,7 @@ class ProgressBar
     if @total.zero?
       100
     else
-      @current  * 100 / @total
+      @current_value  * 100 / @total
     end
   end
 
@@ -190,8 +190,8 @@ class ProgressBar
       cur_percentage = 100
       prev_percentage = 0
     else
-      cur_percentage  = (@current  * 100 / @total).to_i
-      prev_percentage = (@previous * 100 / @total).to_i
+      cur_percentage  = (@current_value  * 100 / @total).to_i
+      prev_percentage = (@previous_value * 100 / @total).to_i
     end
 
     # Use "!=" instead of ">" to support negative changes
@@ -226,7 +226,7 @@ class ProgressBar
   end
 
   def finish
-    @current = @total
+    @current_value = @total
     @finished_p = true
     show
   end
@@ -253,23 +253,23 @@ class ProgressBar
   end
 
   def inc (step = 1)
-    @current += step
-    @current = @total if @current > @total
+    @current_value += step
+    @current_value = @total if @current_value > @total
     show_if_needed
-    @previous = @current
+    @previous_value = @current_value
   end
 
   def set (count)
     if count < 0 || count > @total
       raise "invalid count: #{count} (total: #{@total})"
     end
-    @current = count
+    @current_value = count
     show_if_needed
-    @previous = @current
+    @previous_value = @current_value
   end
 
   def inspect
-    "#<ProgressBar:#{@current}/#{@total}>"
+    "#<ProgressBar:#{@current_value}/#{@total}>"
   end
 end
 
