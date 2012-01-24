@@ -1,13 +1,13 @@
 Gem::Specification.new do |s|
   s.name = "ruby-progressbar"
-  s.version = "0.0.10.0.2"
+  s.version = "0.0.10.0.3"
 
   s.author = "Satoru Takabayashi"
   s.date = Date.today.to_s
   s.description = "Ruby/ProgressBar is a text progress bar library for Ruby."
   s.email = "satoru@namazu.org"
   s.files = %w[GPL_LICENSE RUBY_LICENSE README.md lib/progressbar.rb test/test_progressbar.rb]
-  s.homepage = "http://github.com/nex3/ruby-progressbar"
+  s.homepage = "http://github.com/L2G/ruby-progressbar"
   s.require_paths = ["lib"]
   s.summary = <<END
 Ruby/ProgressBar is a text progress bar library for Ruby.
