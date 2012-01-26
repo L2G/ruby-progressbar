@@ -26,8 +26,6 @@ class ProgressBar
     @title_width = 14
     @format = "%-#{@title_width}s %3d%% %s %s"
     @format_arguments = [:title, :percentage, :bar, :stat]
-    # Naming this factor "smoothing" is a misnomer because higher values
-    # make things LESS smooth.
     @smoothing = 0.9
     @running_average = 0
     clear
@@ -38,6 +36,12 @@ class ProgressBar
   attr_reader   :total
   attr_accessor :start_time
   attr_writer   :bar_mark
+
+  # Exponential smoothing helps keep jitter out of the time-remaining estimate.
+  # The value may be anything from 0.0 to 1.0. Contrary to intuition, LOWER
+  # values make the average smoother, and 1.0 is equivalent to no smoothing
+  # whatsoever (the classic behavior). Default value is 0.9.
+  attr_accessor :smoothing
 
   private
   def fmt_bar
